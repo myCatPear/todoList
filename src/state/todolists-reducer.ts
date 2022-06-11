@@ -101,7 +101,7 @@ export type SetTodolistsType = ReturnType<typeof setTodoLists>
 
 //Thunk
 
-export const getTodoListThunk = (dispatch:Dispatch) =>  {
+export const getTodoListThunk = () => (dispatch:Dispatch) =>  {
     todolistsAPI.getTodolists()
         .then((res) => {
             dispatch(setTodoLists(res.data))

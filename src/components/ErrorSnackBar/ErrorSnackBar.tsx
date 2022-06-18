@@ -20,7 +20,7 @@ export const ErrorSnackbar = () => {
         }
         dispatch(setAppErrorAC(null))
     };
-debugger
+
 
 
     return (

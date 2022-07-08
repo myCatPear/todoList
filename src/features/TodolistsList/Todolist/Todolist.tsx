@@ -3,19 +3,18 @@ import { AddItemForm } from '../../../components/AddItemForm/AddItemForm'
 import { EditableSpan } from '../../../components/EditableSpan/EditableSpan'
 import { Task } from './Task/Task'
 import { TaskStatuses, TaskType } from '../../../api/todolists-api'
-import { FilterValuesType } from '../todolists-reducer'
+import {changeTodoListEntityStatus, FilterValuesType} from '../todolists-reducer'
 import { useDispatch } from 'react-redux'
 import { fetchTasksTC } from '../tasks-reducer'
 
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import { Delete } from '@mui/icons-material';
-import {RequestStatusType} from "../../../app/app-reducer";
+import {RequestStatusType} from "../app-reducer";
 
 type PropsType = {
     id: string
     title: string
-    entityStatus:RequestStatusType
     tasks: Array<TaskType>
     changeFilter: (value: FilterValuesType, todolistId: string) => void
     addTask: (title: string, todolistId: string) => void
@@ -25,7 +24,7 @@ type PropsType = {
     removeTodolist: (id: string) => void
     changeTodolistTitle: (id: string, newTitle: string) => void
     filter: FilterValuesType
-
+    entityStatus:RequestStatusType
 }
 
 export const Todolist = React.memo(function (props: PropsType) {

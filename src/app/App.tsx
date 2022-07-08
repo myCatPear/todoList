@@ -12,17 +12,18 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { Menu } from '@mui/icons-material';
-import { LinearProgress } from '@mui/material';
+import LinearProgress from '@mui/material/LinearProgress/LinearProgress';
 import {useSelector} from "react-redux";
-import {AppRootStateType, useAppSelector} from "./store";
-import {RequestStatusType} from "./app-reducer";
+import {AppRootStateType} from "./store";
+import {RequestStatusType} from "../features/TodolistsList/app-reducer";
+import {useAppSelector} from "./hooks";
 import {ErrorSnackbar} from "../components/ErrorSnackBar/ErrorSnackBar";
 
 
 function App() {
 
-   // const status = useSelector<AppRootStateType,RequestStatusType>((state) => state.app.status)
     const status = useAppSelector((state) => state.app.status)
+
     return (
         <div className="App">
             <AppBar position="static">
@@ -37,11 +38,12 @@ function App() {
                 </Toolbar>
             </AppBar>
 
-            {status === 'loading' && <LinearProgress color={"secondary"}/>}
+            { status === 'loading' && <LinearProgress color={"secondary"}/>}
 
             <Container fixed>
                 <TodolistsList/>
             </Container>
+
             <ErrorSnackbar/>
         </div>
     )
